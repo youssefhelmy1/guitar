@@ -8,91 +8,259 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <h1>y7elmy Guitar Lessons</h1>
-            <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#booking">Book a Lesson</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-            </ul>
+    <!-- Header/Hero Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="gradient-text">y7</span> Guitar
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#booking">Book a Lesson</a>
+                <a href="#testimonials">Testimonials</a>
+            </div>
+            <a href="#booking" class="call-to-action">Start Learning</a>
         </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <h2>Master the Guitar with Personalized Online Lessons</h2>
-        <p>Learn from professional guitarist y7elmy at your own pace.</p>
-        <a href="#booking" class="btn">Book Your First Lesson</a>
-    </section>
-
-    <!-- Signup & Login Forms -->
-    <section>
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
-        </form>
         
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features">
-        <h2>Why Choose My Lessons</h2>
-        <ul>
-            <li>Personalized Approach</li>
-            <li>All Styles Covered</li>
-            <li>HD Video Lessons</li>
-            <li>Flexible Schedule</li>
-            <li>Learn Your Favorite Songs</li>
-            <li>Professional Experience</li>
-        </ul>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <h2>Simple Pricing</h2>
-        <p>Single Lesson: $25 | 12-Lesson Package: $200</p>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking">
-        <h2>Book Your Guitar Lesson</h2>
-        <form>
-            <label>Select Package:</label>
-            <select>
-                <option>Single Lesson - $25</option>
-                <option>12-Lesson Package - $200</option>
-            </select>
-            <button type="submit">Book Now</button>
-        </form>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <h2>What My Students Say</h2>
-        <p>"Amazing instructor! Helped me improve in just a few months." - Sarah M.</p>
-    </section>
-
-    <!-- Footer with Social Media Links -->
-    <footer>
-        <div class="social-links">
-            <a href="https://www.tiktok.com/@y7elmy" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://www.instagram.com/yousefhelmymusic/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.youtube.com/@yousefhelmymusic" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Master the <span class="gradient-text">Guitar</span> with Personalized Online Lessons</h1>
+                <p>Learn from professional guitarist y7elmy at your own pace, from anywhere in the world. Whether you're a beginner or looking to refine your skills, I'll help you achieve your musical goals.</p>
+                <a href="#booking" class="call-to-action">Book Your First Lesson</a>
+            </div>
+            <img src="/api/placeholder/800/600" alt="3D Guitar" class="guitar-3d">
         </div>
-        <p>© 2025 y7elmy Guitar Lessons. All rights reserved.</p>
+    </header>
+    
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2 class="section-title">Why Choose <span class="gradient-text">My Lessons</span></h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Personalized Approach</h3>
+                <p>Custom lesson plans tailored to your skill level, learning style, and musical goals.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-guitar"></i>
+                </div>
+                <h3>All Styles Covered</h3>
+                <p>From rock and blues to jazz and classical - learn any style that interests you.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>HD Video Lessons</h3>
+                <p>Crystal clear video and audio quality for the best online learning experience.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Flexible Schedule</h3>
+                <p>Book lessons at your convenience with availability from 3 PM to 1 AM daily.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3>Learn Your Favorite Songs</h3>
+                <p>Master the songs you love while developing essential guitar techniques.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Professional Experience</h3>
+                <p>Learn from an experienced guitarist with a passion for teaching.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <h2 class="section-title">Simple <span class="gradient-text">Pricing</span></h2>
+        <div class="pricing">
+            <div class="price-card">
+                <h3>Single Lesson</h3>
+                <div class="price">$25</div>
+                <ul>
+                    <li>1-hour private lesson</li>
+                    <li>Personalized instruction</li>
+                    <li>Lesson materials included</li>
+                    <li>Perfect for trying it out</li>
+                </ul>
+                <a href="#booking" class="call-to-action">Book Now</a>
+            </div>
+            
+            <div class="price-card featured">
+                <h3>12-Lesson Package</h3>
+                <div class="price"><span class="original-price">$300</span>$200</div>
+                <ul>
+                    <li>12 one-hour private lessons</li>
+                    <li>$100 discount ($8.33 savings per lesson)</li>
+                    <li>Customized learning plan</li>
+                    <li>Premium support between lessons</li>
+                    <li>Progress tracking</li>
+                    <li>Bonus practice materials</li>
+                </ul>
+                <a href="#booking" class="call-to-action">Get Started</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <h2 class="section-title">Book Your <span class="gradient-text">Guitar Lesson</span></h2>
+        <div class="booking-container">
+            <div class="booking-image">
+                <img src="/api/placeholder/600/800" alt="Guitar Lesson" style="width: 100%; height: auto;">
+            </div>
+            
+            <div class="booking-form">
+                <form id="lessonForm">
+                    <div class="form-group">
+                        <label for="package">Select Package:</label>
+                        <select id="package" class="form-control">
+                            <option value="single">Single Lesson - $25</option>
+                            <option value="package">12-Lesson Package - $200 (Save $100)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Day:</label>
+                        <div class="days-select">
+                            <div class="day-option">Sunday</div>
+                            <div class="day-option">Monday</div>
+                            <div class="day-option">Tuesday</div>
+                            <div class="day-option">Wednesday</div>
+                            <div class="day-option">Thursday</div>
+                            <div class="day-option">Friday</div>
+                            <div class="day-option">Saturday</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Time:</label>
+                        <div class="time-slots">
+                            <div class="time-slot">3:00 PM</div>
+                            <div class="time-slot">4:00 PM</div>
+                            <div class="time-slot">5:00 PM</div>
+                            <div class="time-slot">6:00 PM</div>
+                            <div class="time-slot">7:00 PM</div>
+                            <div class="time-slot">8:00 PM</div>
+                            <div class="time-slot">9:00 PM</div>
+                            <div class="time-slot">10:00 PM</div>
+                            <div class="time-slot">11:00 PM</div>
+                            <div class="time-slot">12:00 AM</div>
+                            <div class="time-slot">1:00 AM</div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
+                    <div class="success-message" id="successMessage">
+                        Your booking was successful! You'll receive a confirmation email shortly.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <h2 class="section-title">What My <span class="gradient-text">Students Say</span></h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <p class="testimonial-text">After just 3 months of lessons with y7elmy, I went from never holding a guitar to playing my favorite songs. His teaching style is patient and encouraging!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="/api/placeholder/50/50" alt="Sarah M.">
+                    </div>
+                    <div>
+                        <div class="author-name">Sarah M.</div>
+                        <div class="author-title">Beginner Student</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">As an intermediate player, I was looking to break through a plateau. y7elmy helped me master techniques I'd been struggling with for years. Worth every penny!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="/api/placeholder/50/50" alt="Michael K.">
+                    </div>
+                    <div>
+                        <div class="author-name">Michael K.</div>
+                        <div class="author-title">Intermediate Student</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">The flexibility of online lessons with y7elmy has been incredible. Despite being in a different time zone, he accommodates my schedule perfectly. Top-notch instruction!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="/api/placeholder/50/50" alt="Elena R.">
+                    </div>
+                    <div>
+                        <div class="author-name">Elena R.</div>
+                        <div class="author-title">Advanced Student</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@y7elmy" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/yousefhelmymusic/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@yousefhelmymusic" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:y7elmylessons@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="copyright">© 2025 y7elmy Guitar Lessons. All rights reserved.</p>
     </footer>
+    
+    <!-- Authentication Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Login</div>
+                <div class="auth-tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+            <form class="auth-form" id="signupForm">
+                <div class="form-group
 
+
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" class="form-control" required>
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
