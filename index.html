@@ -29,7 +29,7 @@
                 <p>Learn from professional guitarist y7elmy at your own pace, from anywhere in the world. Whether you're a beginner or looking to refine your skills, I'll help you achieve your musical goals.</p>
                 <a href="#booking" class="call-to-action">Book Your First Lesson</a>
             </div>
-            <img src="/api/placeholder/800/600" alt="3D Guitar" class="guitar-3d">
+            <video src="/api/placeholder/800/600" alt="3D Guitar" class="guitar-3d"></video>
         </div>
     </header>
     
@@ -119,62 +119,126 @@
         </div>
     </section>
     
-    <!-- Booking Section -->
-    <section class="booking-section" id="booking">
-        <h2 class="section-title">Book Your <span class="gradient-text">Guitar Lesson</span></h2>
-        <div class="booking-container">
-            <div class="booking-image">
-                <img src="/api/placeholder/600/800" alt="Guitar Lesson" style="width: 100%; height: auto;">
-            </div>
-            
-            <div class="booking-form">
-                <form id="lessonForm">
-                    <div class="form-group">
-                        <label for="package">Select Package:</label>
-                        <select id="package" class="form-control">
-                            <option value="single">Single Lesson - $25</option>
-                            <option value="package">12-Lesson Package - $200 (Save $100)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Select Day:</label>
-                        <div class="days-select">
-                            <div class="day-option">Sunday</div>
-                            <div class="day-option">Monday</div>
-                            <div class="day-option">Tuesday</div>
-                            <div class="day-option">Wednesday</div>
-                            <div class="day-option">Thursday</div>
-                            <div class="day-option">Friday</div>
-                            <div class="day-option">Saturday</div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Select Time:</label>
-                        <div class="time-slots">
-                            <div class="time-slot">3:00 PM</div>
-                            <div class="time-slot">4:00 PM</div>
-                            <div class="time-slot">5:00 PM</div>
-                            <div class="time-slot">6:00 PM</div>
-                            <div class="time-slot">7:00 PM</div>
-                            <div class="time-slot">8:00 PM</div>
-                            <div class="time-slot">9:00 PM</div>
-                            <div class="time-slot">10:00 PM</div>
-                            <div class="time-slot">11:00 PM</div>
-                            <div class="time-slot">12:00 AM</div>
-                            <div class="time-slot">1:00 AM</div>
-                        </div>
-                    </div>
-                    
-                    <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
-                    <div class="success-message" id="successMessage">
-                        Your booking was successful! You'll receive a confirmation email shortly.
-                    </div>
-                </form>
-            </div>
+  <!-- Updated Booking Section -->
+<section class="booking-section" id="booking">
+    <h2 class="section-title">Book Your <span class="gradient-text">Guitar Lesson</span></h2>
+    <div class="booking-container">
+        <div class="booking-image">
+            <img src="/api/placeholder/600/800" alt="Guitar Lesson" style="width: 100%; height: auto;">
         </div>
-    </section>
+        
+        <div class="booking-form">
+            <form id="lessonForm">
+                <div class="form-group">
+                    <label for="package">Select Package:</label>
+                    <select id="package" class="form-control">
+                        <option value="single">Single Lesson - $25</option>
+                        <option value="package">12-Lesson Package - $200 (Save $100)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Day:</label>
+                    <div class="calendar-navigator">
+                        <button type="button" class="calendar-nav-btn" id="prevWeek">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="current-month" id="currentMonth">March 2025</div>
+                        <button type="button" class="calendar-nav-btn" id="nextWeek">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="days-select">
+                        <div class="day-option">
+                            <div class="day-name">Sun</div>
+                            <div class="day-date">24</div>
+                        </div>
+                        <div class="day-option">
+                            <div class="day-name">Mon</div>
+                            <div class="day-date">25</div>
+                        </div>
+                        <div class="day-option">
+                            <div class="day-name">Tue</div>
+                            <div class="day-date">26</div>
+                        </div>
+                        <div class="day-option">
+                            <div class="day-name">Wed</div>
+                            <div class="day-date">27</div>
+                        </div>
+                        <div class="day-option">
+                            <div class="day-name">Thu</div>
+                            <div class="day-date">28</div>
+                        </div>
+                        <div class="day-option">
+                            <div class="day-name">Fri</div>
+                            <div class="day-date">29</div>
+                        </div>
+                        <div class="day-option">
+                            <div class="day-name">Sat</div>
+                            <div class="day-date">30</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Time:</label>
+                    <div class="availability-legend">
+                        <div class="availability-indicator available-indicator">
+                            <span></span> Available
+                        </div>
+                        <div class="availability-indicator unavailable-indicator">
+                            <span></span> Booked
+                        </div>
+                    </div>
+                    <div class="time-slots">
+                        <div class="time-slot tooltip">
+                            <span>3:00 PM</span>
+                            <span class="tooltip-text unavailable-tooltip">Already booked</span>
+                        </div>
+                        <div class="time-slot">4:00 PM</div>
+                        <div class="time-slot">5:00 PM</div>
+                        <div class="time-slot">6:00 PM</div>
+                        <div class="time-slot">7:00 PM</div>
+                        <div class="time-slot">8:00 PM</div>
+                        <div class="time-slot">9:00 PM</div>
+                        <div class="time-slot">10:00 PM</div>
+                        <div class="time-slot">11:00 PM</div>
+                        <div class="time-slot">12:00 AM</div>
+                        <div class="time-slot">1:00 AM</div>
+                    </div>
+                </div>
+                
+                <div class="booking-summary" id="bookingSummary">
+                    <h3>Booking Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span class="summary-label">Package:</span>
+                            <span class="summary-value" id="summaryPackage">Single Lesson</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Date:</span>
+                            <span class="summary-value" id="summaryDate">Not selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Time:</span>
+                            <span class="summary-value" id="summaryTime">Not selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total:</span>
+                            <span class="summary-value" id="summaryTotal">$25.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    Your booking was successful! You'll receive a confirmation email shortly.
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
     
     <!-- Testimonials Section -->
     <section class="section" id="testimonials">
@@ -231,36 +295,125 @@
         </div>
         <p class="copyright">© 2025 y7elmy Guitar Lessons. All rights reserved.</p>
     </footer>
-    
-    <!-- Authentication Modal -->
-    <div class="auth-modal" id="authModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal"><i class="fas fa-times"></i></button>
-            <div class="auth-tabs">
-                <div class="auth-tab active" data-tab="login">Login</div>
-                <div class="auth-tab" data-tab="signup">Sign Up</div>
+    <!-- Updated Authentication Modal -->
+<div class="auth-modal" id="authModal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModal"><i class="fas fa-times"></i></button>
+        <div class="auth-tabs">
+            <div class="auth-tab active" data-tab="login">Login</div>
+            <div class="auth-tab" data-tab="signup">Sign Up</div>
+        </div>
+        
+        <form class="auth-form active" id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" class="form-control" required>
             </div>
-            
-            <form class="auth-form active" id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email:</label>
-                    <input type="email" id="loginEmail" class="form-control" required>
+            <div class="form-group">
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
                 </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password:</label>
-                    <input type="password" id="loginPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn-submit">Login</button>
+            <div class="auth-separator">
+                <span>OR</span>
+            </div>
+            <div class="social-auth">
+                <button type="button" class="social-auth-btn google">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <button type="button" class="social-auth-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Continue with Facebook
+                </button>
+            </div>
+        </form>
+        
+        <form class="auth-form" id="signupForm">
+            <div class="form-group">
+                <label for="signupName">Full Name:</label>
+                <input type="text" id="signupName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" class="form-control" required>
+                <div class="password-strength"></div>
+                <div class="password-requirements">
+                    Password must contain at least 8 characters, including uppercase, lowercase, and numbers
                 </div>
-                <button type="submit" class="btn-submit">Login</button>
-            </form>
-            <form class="auth-form" id="signupForm">
-                <div class="form-group
-
-
-                    <label for="signupEmail">Email:</label>
-                    <input type="email" id="signupEmail" class="form-control" required>
-            </form>
+            </div>
+            <div class="form-group">
+                <label for="signupConfirmPassword">Confirm Password:</label>
+                <input type="password" id="signupConfirmPassword" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Experience Level:</label>
+                <div class="experience-select">
+                    <div class="experience-option" data-value="beginner">Beginner</div>
+                    <div class="experience-option" data-value="intermediate">Intermediate</div>
+                    <div class="experience-option" data-value="advanced">Advanced</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="terms">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the <a href="#">Terms & Conditions</a></label>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Create Account</button>
+            <div class="auth-separator">
+                <span>OR</span>
+            </div>
+            <div class="social-auth">
+                <button type="button" class="social-auth-btn google">
+                    <i class="fab fa-google"></i> Sign up with Google
+                </button>
+                <button type="button" class="social-auth-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Sign up with Facebook
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+    <!-- This part goes inside the signup form in index.html -->
+<form class="auth-form" id="signupForm">
+    <div class="form-group">
+        <label for="signupName">Full Name:</label>
+        <input type="text" id="signupName" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="signupEmail">Email:</label>
+        <input type="email" id="signupEmail" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="signupConfirmPassword">Confirm Password:</label>
+        <input type="password" id="signupConfirmPassword" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Experience Level:</label>
+        <div class="experience-select">
+            <div class="experience-option" data-value="beginner">Beginner</div>
+            <div class="experience-option" data-value="intermediate">Intermediate</div>
+            <div class="experience-option" data-value="advanced">Advanced</div>
         </div>
     </div>
+    <button type="submit" class="btn-submit">Create Account</button>
+</form>
     <script src="script.js"></script>
 </body>
 </html>
