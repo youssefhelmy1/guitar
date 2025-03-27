@@ -6,19 +6,20 @@
     <title>y7elmy Guitar Lessons</title>
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?https://paypal.me/yousefhelmymusic?country.x=BH&locale.x=en_US&currency=USD"></script>
 </head>
 <body>
     <!-- Header/Hero Section -->
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <span class="gradient-text">y7</span> Guitar
+                <span class="gradient-text">y7elmy</span> Guitar
             </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#booking">Book a Lesson</a>
-                <a href="#testimonials">Testimonials</a>
+                <a href="#testimonials">Feedback</a>
             </div>
             <a href="#booking" class="call-to-action">Start Learning</a>
         </nav>
@@ -114,7 +115,7 @@
                     <li>Progress tracking</li>
                     <li>Bonus practice materials</li>
                 </ul>
-                <a href="#booking" class="call-to-action">Get Started</a>
+                <a href="#booking" class="call-to-action">Get Started</a>        
             </div>
         </div>
     </section>
@@ -151,31 +152,24 @@
                     <div class="days-select">
                         <div class="day-option">
                             <div class="day-name">Sun</div>
-                            <div class="day-date">24</div>
                         </div>
                         <div class="day-option">
                             <div class="day-name">Mon</div>
-                            <div class="day-date">25</div>
                         </div>
                         <div class="day-option">
                             <div class="day-name">Tue</div>
-                            <div class="day-date">26</div>
                         </div>
                         <div class="day-option">
                             <div class="day-name">Wed</div>
-                            <div class="day-date">27</div>
                         </div>
                         <div class="day-option">
                             <div class="day-name">Thu</div>
-                            <div class="day-date">28</div>
                         </div>
                         <div class="day-option">
                             <div class="day-name">Fri</div>
-                            <div class="day-date">29</div>
                         </div>
                         <div class="day-option">
                             <div class="day-name">Sat</div>
-                            <div class="day-date">30</div>
                         </div>
                     </div>
                 </div>
@@ -231,11 +225,69 @@
                 </div>
                 
                 <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i>
-                    Your booking was successful! You'll receive a confirmation email shortly.
-                </div>
-            </form>
+                <div id="paypal-button-container"></div>
+
+                <script>
+                    paypal.Buttons({
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: '200' // Change price as needed
+                                    }
+                                }]
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                alert('Payment Successful! Thank you, ' + details.payer.name.given_name);
+                            });
+                        }
+                    }).render('#paypal-button-container');
+                </script>
+            </div>
+            <div class="success-message" id="successMessage" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                Your booking was successful! You'll receive a confirmation email shortly.
+            </div>
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                An error occurred while booking your lesson. Please try again later.
+            </div>
+            <div class="loading-message" id="loadingMessage" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                Loading...
+            </div>
+            <div class="cancel-message" id="cancelMessage" style="display: none;">
+                <i class="fas fa-times"></i>
+                Your booking was cancelled.
+            </div>
+            <script>
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: document.getElementById('package').value === 'package' ? '200' : '25'
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            document.getElementById('successMessage').style.display = 'block';
+                            document.getElementById('errorMessage').style.display = 'none';
+                            alert('Payment Successful! Thank you, ' + details.payer.name.given_name);
+                        });
+                    },
+                    onCancel: function(data) {
+                        document.getElementById('cancelMessage').style.display = 'block';
+                    },
+                    onError: function(err) {
+                        document.getElementById('errorMessage').style.display = 'block';
+                    }
+                }).render('#paypal-button-container');
+            </script>
         </div>
     </div>
 </section>
@@ -306,36 +358,33 @@
         
         <form class="auth-form active" id="loginForm">
             <div class="form-group">
-                <label for="loginEmail">Email:</label>
-                <input type="email" id="loginEmail" class="form-control" required>
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" class="form-control" required>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" class="form-control" required>
             </div>
             <div class="form-group">
-                <div class="remember-forgot">
-                    <div class="remember-me">
-                        <input type="checkbox" id="rememberMe">
-                        <label for="rememberMe">Remember me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+            <div class="remember-forgot">
+                <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember me</label>
                 </div>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
             </div>
             <button type="submit" class="btn-submit">Login</button>
             <div class="auth-separator">
-                <span>OR</span>
+            <span>OR</span>
             </div>
-            <div class="social-auth">
-                <button type="button" class="social-auth-btn google">
-                    <i class="fab fa-google"></i> Continue with Google
-                </button>
-                <button type="button" class="social-auth-btn facebook">
-                    <i class="fab fa-facebook-f"></i> Continue with Facebook
-                </button>
+            <div class="social-auth">>
+                <a href="login.php">
+                    <button>Sign in with Google</button>
+                </a>                
             </div>
         </form>
-        
+    
         <form class="auth-form" id="signupForm">
             <div class="form-group">
                 <label for="signupName">Full Name:</label>
