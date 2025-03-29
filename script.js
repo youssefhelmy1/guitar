@@ -53,8 +53,8 @@ document.querySelectorAll('.day-option').forEach(dayOption => {
         document.querySelectorAll('.day-option').forEach(opt => opt.classList.remove('selected'));
         this.classList.add('selected');
         bookingState.day = this.getAttribute('data-day');
-        updateBookingSummary();
         updateAvailableTimeSlots();
+        updateBookingSummary();
     });
 });
 
@@ -126,39 +126,42 @@ function resetBookingForm() {
 
 // Update available time slots based on selected day
 function updateAvailableTimeSlots() {
-    // Reset all time slots
-    timeSlots.forEach(slot => {
-        slot.classList.remove('unavailable');
-    });
-    
-    // Simulate some time slots being unavailable based on the day
-    // In a real application, this would come from your backend
     const unavailableTimes = getUnavailableTimes(bookingState.day);
-    
-    unavailableTimes.forEach(time => {
-        const slot = Array.from(timeSlots).find(slot => slot.textContent === time);
-        if (slot) {
+    document.querySelectorAll('.time-slot').forEach(slot => {
+        if (unavailableTimes.includes(slot.getAttribute('data-time'))) {
             slot.classList.add('unavailable');
+            slot.classList.add('tooltip');
+            if (!slot.querySelector('.tooltip-text')) {
+                const tooltipText = document.createElement('span');
+                tooltipText.className = 'tooltip-text';
+                tooltipText.textContent = 'Already booked';
+                slot.appendChild(tooltipText);
+            }
+        } else {
+            slot.classList.remove('unavailable');
+            slot.classList.remove('tooltip');
+            const tooltipText = slot.querySelector('.tooltip-text');
+            if (tooltipText) {
+                slot.removeChild(tooltipText);
+            }
         }
     });
 }
 
 // Get unavailable times for a given day (simulation)
 function getUnavailableTimes(day) {
-    // This would typically come from your backend
+    // This is a placeholder. In a real application, you would fetch this data from your server.
     const unavailableTimes = {
-        'Monday': ['3:00 PM', '4:00 PM', '5:00 PM'],
-        'Tuesday': ['7:00 PM', '8:00 PM'],
-        'Wednesday': ['6:00 PM', '9:00 PM'],
-        'Thursday': ['10:00 PM', '11:00 PM'],
-        'Friday': ['12:00 AM', '1:00 AM'],
-        'Saturday': ['3:00 PM', '8:00 PM'],
-        'Sunday': ['5:00 PM', '6:00 PM', '7:00 PM']
+        'Sun': ['15:00', '16:00'],
+        'Mon': ['17:00', '18:00'],
+        'Tue': ['19:00', '20:00'],
+        'Wed': ['21:00', '22:00'],
+        'Thu': ['23:00', '00:00'],
+        'Fri': ['15:00', '16:00'],
+        'Sat': ['17:00', '18:00']
     };
-    
     return unavailableTimes[day] || [];
 }
-
 // Authentication modal functionality
 closeModal.addEventListener('click', function() {
     authModal.classList.remove('active');

@@ -136,16 +136,19 @@
                         <option value="package">12-Lesson Package - $200 (Save $100)</option>
                     </select>
                 </div>
-                <div class="days-select">
-                    <div class="day-option" data-day="Sun">Sun</div>
-                    <div class="day-option" data-day="Mon">Mon</div>
-                    <div class="day-option" data-day="Tue">Tue</div>
-                    <div class="day-option" data-day="Wed">Wed</div>
-                    <div class="day-option" data-day="Thu">Thu</div>
-                    <div class="day-option" data-day="Fri">Fri</div>
-                    <div class="day-option" data-day="Sat">Sat</div>
-                </div>
-                </div>
+                <div class="booking-calendar">
+                    <div class="form-group">
+                        <label>Select Day:</label>
+                        <div class="days-select">
+                            <div class="day-option" data-day="Sun">Sun</div>
+                            <div class="day-option" data-day="Mon">Mon</div>
+                            <div class="day-option" data-day="Tue">Tue</div>
+                            <div class="day-option" data-day="Wed">Wed</div>
+                            <div class="day-option" data-day="Thu">Thu</div>
+                            <div class="day-option" data-day="Fri">Fri</div>
+                            <div class="day-option" data-day="Sat">Sat</div>
+                        </div>
+                    </div>
                 </div>                
                 <div class="form-group">
                     <label>Select Time:</label>
@@ -158,10 +161,6 @@
                         </div>
                     </div>
                     <div class="time-slots">
-                        <div class="time-slot tooltip">
-                            <span>3:00 PM</span>
-                            <span class="tooltip-text unavailable-tooltip">Already booked</span>
-                        </div>
                         <div class="time-slot" data-time="15:00">3:00 PM</div>
                         <div class="time-slot" data-time="16:00">4:00 PM</div>
                         <div class="time-slot" data-time="17:00">5:00 PM</div>
@@ -175,6 +174,7 @@
                         <div class="time-slot" data-time="01:00">1:00 AM</div>
                     </div>
                 </div>
+            </div>
                 <div class="booking-summary" id="bookingSummary">
                     <h3>Booking Summary</h3>
                     <div class="summary-details">
