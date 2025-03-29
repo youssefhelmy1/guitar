@@ -127,7 +127,6 @@
         <div class="booking-image">
             <img src="/api/placeholder/600/800" alt="Guitar Lesson" style="width: 100%; height: auto;">
         </div>
-        
         <div class="booking-form">
             <form id="lessonForm">
                 <div class="form-group">
@@ -137,43 +136,17 @@
                         <option value="package">12-Lesson Package - $200 (Save $100)</option>
                     </select>
                 </div>
-                
-                <div class="form-group">
-                    <label>Select Day:</label>
-                    <div class="calendar-navigator">
-                        <button type="button" class="calendar-nav-btn" id="prevWeek">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="current-month" id="currentMonth">March 2025</div>
-                        <button type="button" class="calendar-nav-btn" id="nextWeek">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                    <div class="days-select">
-                        <div class="day-option">
-                            <div class="day-name">Sun</div>
-                        </div>
-                        <div class="day-option">
-                            <div class="day-name">Mon</div>
-                        </div>
-                        <div class="day-option">
-                            <div class="day-name">Tue</div>
-                        </div>
-                        <div class="day-option">
-                            <div class="day-name">Wed</div>
-                        </div>
-                        <div class="day-option">
-                            <div class="day-name">Thu</div>
-                        </div>
-                        <div class="day-option">
-                            <div class="day-name">Fri</div>
-                        </div>
-                        <div class="day-option">
-                            <div class="day-name">Sat</div>
-                        </div>
-                    </div>
+                <div class="days-select">
+                    <div class="day-option" data-day="Sun">Sun</div>
+                    <div class="day-option" data-day="Mon">Mon</div>
+                    <div class="day-option" data-day="Tue">Tue</div>
+                    <div class="day-option" data-day="Wed">Wed</div>
+                    <div class="day-option" data-day="Thu">Thu</div>
+                    <div class="day-option" data-day="Fri">Fri</div>
+                    <div class="day-option" data-day="Sat">Sat</div>
                 </div>
-                
+                </div>
+                </div>                
                 <div class="form-group">
                     <label>Select Time:</label>
                     <div class="availability-legend">
@@ -189,19 +162,19 @@
                             <span>3:00 PM</span>
                             <span class="tooltip-text unavailable-tooltip">Already booked</span>
                         </div>
-                        <div class="time-slot">4:00 PM</div>
-                        <div class="time-slot">5:00 PM</div>
-                        <div class="time-slot">6:00 PM</div>
-                        <div class="time-slot">7:00 PM</div>
-                        <div class="time-slot">8:00 PM</div>
-                        <div class="time-slot">9:00 PM</div>
-                        <div class="time-slot">10:00 PM</div>
-                        <div class="time-slot">11:00 PM</div>
-                        <div class="time-slot">12:00 AM</div>
-                        <div class="time-slot">1:00 AM</div>
+                        <div class="time-slot" data-time="15:00">3:00 PM</div>
+                        <div class="time-slot" data-time="16:00">4:00 PM</div>
+                        <div class="time-slot" data-time="17:00">5:00 PM</div>
+                        <div class="time-slot" data-time="18:00">6:00 PM</div>
+                        <div class="time-slot" data-time="19:00">7:00 PM</div>
+                        <div class="time-slot" data-time="20:00">8:00 PM</div>
+                        <div class="time-slot" data-time="21:00">9:00 PM</div>
+                        <div class="time-slot" data-time="22:00">10:00 PM</div>
+                        <div class="time-slot" data-time="23:00">11:00 PM</div>
+                        <div class="time-slot" data-time="00:00">12:00 AM</div>
+                        <div class="time-slot" data-time="01:00">1:00 AM</div>
                     </div>
                 </div>
-                
                 <div class="booking-summary" id="bookingSummary">
                     <h3>Booking Summary</h3>
                     <div class="summary-details">
@@ -227,48 +200,16 @@
                 <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
                 <div id="paypal-button-container"></div>
 
-                <script>
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: '200' // Change price as needed
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('Payment Successful! Thank you, ' + details.payer.name.given_name);
-                            });
-                        }
-                    }).render('#paypal-button-container');
-                </script>
-            </div>
-            <div class="success-message" id="successMessage" style="display: none;">
-                <i class="fas fa-check-circle"></i>
-                Your booking was successful! You'll receive a confirmation email shortly.
-            </div>
-            <div class="error-message" id="errorMessage" style="display: none;">
-                <i class="fas fa-exclamation-triangle"></i>
-                An error occurred while booking your lesson. Please try again later.
-            </div>
-            <div class="loading-message" id="loadingMessage" style="display: none;">
-                <i class="fas fa-spinner fa-spin"></i>
-                Loading...
-            </div>
-            <div class="cancel-message" id="cancelMessage" style="display: none;">
-                <i class="fas fa-times"></i>
-                Your booking was cancelled.
-            </div>
+            <div id="paypal-button-container"></div>
             <script>
                 paypal.Buttons({
                     createOrder: function(data, actions) {
+                        const packageSelect = document.getElementById('package');
+                        const amount = packageSelect.value === 'package' ? '200.00' : '25.00';
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {
-                                    value: document.getElementById('package').value === 'package' ? '200' : '25'
+                                    value: amount
                                 }
                             }]
                         });
@@ -278,6 +219,7 @@
                             document.getElementById('successMessage').style.display = 'block';
                             document.getElementById('errorMessage').style.display = 'none';
                             alert('Payment Successful! Thank you, ' + details.payer.name.given_name);
+                            // Here you can add code to update your backend about the successful booking
                         });
                     },
                     onCancel: function(data) {
@@ -285,9 +227,11 @@
                     },
                     onError: function(err) {
                         document.getElementById('errorMessage').style.display = 'block';
+                        console.error('PayPal Error:', err);
                     }
                 }).render('#paypal-button-container');
             </script>
+
         </div>
     </div>
 </section>

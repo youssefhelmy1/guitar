@@ -39,25 +39,41 @@ dayOptions.forEach(dayOption => {
     });
 });
 
-// Time slot selection
-timeSlots.forEach(timeSlot => {
-    timeSlot.addEventListener('click', function() {
-        if (this.classList.contains('unavailable')) return;
-        
-        // Remove selected class from all time slots
-        timeSlots.forEach(slot => slot.classList.remove('selected'));
-        
-        // Add selected class to clicked time slot
+// Update booking summary
+function updateBookingSummary() {
+    document.getElementById('summaryPackage').textContent = bookingState.package === 'package' ? '12-Lesson Package' : 'Single Lesson';
+    document.getElementById('summaryDate').textContent = bookingState.day ? bookingState.day : 'Not selected';
+    document.getElementById('summaryTime').textContent = bookingState.time ? bookingState.time : 'Not selected';
+    document.getElementById('summaryTotal').textContent = bookingState.package === 'package' ? '$200.00' : '$25.00';
+}
+
+// Day selection
+document.querySelectorAll('.day-option').forEach(dayOption => {
+    dayOption.addEventListener('click', function() {
+        document.querySelectorAll('.day-option').forEach(opt => opt.classList.remove('selected'));
         this.classList.add('selected');
-        
-        // Update booking state
-        bookingState.time = this.textContent;
+        bookingState.day = this.getAttribute('data-day');
+        updateBookingSummary();
+        updateAvailableTimeSlots();
+    });
+});
+
+// Time slot selection
+document.querySelectorAll('.time-slot').forEach(timeSlot => {
+    timeSlot.addEventListener('click', function() {
+        if (!this.classList.contains('unavailable')) {
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            this.classList.add('selected');
+            bookingState.time = this.getAttribute('data-time');
+            updateBookingSummary();
+        }
     });
 });
 
 // Package selection
 document.getElementById('package').addEventListener('change', function() {
     bookingState.package = this.value;
+    updateBookingSummary();
 });
 
 // Book button click event
@@ -235,6 +251,9 @@ document.querySelectorAll('.call-to-action').forEach(cta => {
         });
     }
 });
+
+    // Trigger PayPal payment
+    document.querySelector('.paypal-buttons').click();
 
 // Add hover effects and animations
 document.addEventListener('DOMContentLoaded', function() {
