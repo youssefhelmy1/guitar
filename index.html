@@ -6,8 +6,7 @@
     <title>y7elmy Guitar Lessons</title>
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://www.paypal.com/sdk/js?https://paypal.me/yousefhelmymusic?country.x=BH&locale.x=en_US&currency=USD"></script>
-</head>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID_HERE&currency=USD"></script>
 <body>
     <!-- Header/Hero Section -->
     <header class="header">
@@ -121,6 +120,7 @@
     </section>
     
   <!-- Updated Booking Section -->
+<!-- Updated Booking Section - Replace the existing booking section with this code -->
 <section class="booking-section" id="booking">
     <h2 class="section-title">Book Your <span class="gradient-text">Guitar Lesson</span></h2>
     <div class="booking-container">
@@ -139,6 +139,7 @@
                 <div class="booking-calendar">
                     <div class="form-group">
                         <label>Select Day:</label>
+                        <div class="selection-required" id="dayRequired">Please select a day</div>
                         <div class="days-select">
                             <div class="day-option" data-day="Sun">Sun</div>
                             <div class="day-option" data-day="Mon">Mon</div>
@@ -152,6 +153,7 @@
                 </div>                
                 <div class="form-group">
                     <label>Select Time:</label>
+                    <div class="selection-required" id="timeRequired">Please select a time</div>
                     <div class="availability-legend">
                         <div class="availability-indicator available-indicator">
                             <span></span> Available
@@ -174,7 +176,7 @@
                         <div class="time-slot" data-time="01:00">1:00 AM</div>
                     </div>
                 </div>
-            </div>
+                
                 <div class="booking-summary" id="bookingSummary">
                     <h3>Booking Summary</h3>
                     <div class="summary-details">
@@ -197,11 +199,15 @@
                     </div>
                 </div>
                 
+                <!-- Hidden initially, will show if needed -->
                 <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
+                
+                <!-- PayPal button container -->
                 <div id="paypal-button-container"></div>
-
-            <div id="paypal-button-container"></div>
-            <script>
+            </form>
+        </div>
+    </div>
+</section>
                 paypal.Buttons({
                     createOrder: function(data, actions) {
                         const packageSelect = document.getElementById('package');
