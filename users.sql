@@ -1,16 +1,22 @@
--- Active: 1716015696405@@127.0.0.1@3306
-CREATE DATABASE IF NOT EXISTS guitar_lessons_db;
-USE guitar_lessons_db;
-
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(100) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    profile_pic VARCHAR(255) DEFAULT 'default.jpg', -- Default profile picture
-    experience_level ENUM('beginner', 'intermediate', 'advanced') NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ 
+ CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `experience_level` enum('beginner','intermediate','advanced') NOT NULL,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
 
--- Index for faster queries on email
-CREATE INDEX idx_email ON users(email);
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `package_type` enum('single','package') NOT NULL,
+  `booking_day` varchar(20) NOT NULL,
+  `booking_time` varchar(20) NOT NULL,
+  `payment_id` varchar(100) NOT NULL,
+  `booking_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+);

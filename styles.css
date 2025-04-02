@@ -916,3 +916,377 @@ body {
     gap: 1.5rem;
     margin-bottom: 1rem;
 }
+/* Add these styles to your existing CSS file */
+
+/* Login Button in Nav */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-button {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Auth Modal */
+.auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.auth-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    position: relative;
+}
+
+.auth-tab.active {
+    color: var(--color-primary);
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.experience-select {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.experience-option {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.experience-option:hover {
+    border-color: var(--color-primary);
+}
+
+.experience-option.selected {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.forgot-password {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.terms a {
+    color: var(--color-primary);
+}
+
+.auth-separator {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.auth-separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.auth-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.auth-separator span {
+    background-color: white;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+    color: #666;
+}
+
+.social-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-auth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-auth-btn.google {
+    color: #DB4437;
+}
+
+.social-auth-btn:hover {
+    background-color: #f9f9f9;
+}
+
+.auth-message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #FFEBEE;
+    color: #B71C1C;
+    border: 1px solid #EF9A9A;
+}
+
+.success-message {
+    background-color: #E8F5E9;
+    color: #1B5E20;
+    border: 1px solid #A5D6A7;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    height: 5px;
+    width: 0%;
+    background-color: #ddd;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.password-strength.weak {
+    background-color: #F44336;
+}
+
+.password-strength.medium {
+    background-color: #FFC107;
+}
+
+.password-strength.strong {
+    background-color: #4CAF50;
+}
+
+.password-requirements {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Booking Form - Login Required State */
+.booking-form.login-required {
+    position: relative;
+}
+
+.booking-form.login-required::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+}
+
+.booking-form.login-required::after {
+    content: 'Please log in to book a lesson';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-primary);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    z-index: 11;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Selection Required Messages */
+.selection-required {
+    color: #D32F2F;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* PayPal Button Container */
+#paypal-button-container.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Booking Messages */
+.booking-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.success-message {
+    background-color: #E8F5E9;
+    color: #1B5E20;
+    border: 1px solid #A5D6A7;
+}
+
+.error-message {
+    background-color: #FFEBEE;
+    color: #B71C1C;
+    border: 1px solid #EF9A9A;
+}
+
+/* Tooltip for unavailable time slots */
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

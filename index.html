@@ -10,18 +10,22 @@
 <body>
     <!-- Header/Hero Section -->
     <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <span class="gradient-text">y7elmy</span> Guitar
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#booking">Book a Lesson</a>
-                <a href="#testimonials">Feedback</a>
-            </div>
-            <a href="#booking" class="call-to-action">Start Learning</a>
-        </nav>
+      <!-- Modified navigation bar with login button -->
+<nav class="navbar">
+    <div class="logo">
+        <span class="gradient-text">y7elmy</span> Guitar
+    </div>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#booking">Book a Lesson</a>
+        <a href="#testimonials">Feedback</a>
+    </div>
+    <div class="user-actions">
+        <button id="loginBtn" class="login-button">Login</button>
+        <a href="#booking" class="call-to-action">Start Learning</a>
+    </div>
+            </nav>  
         
         <div class="hero">
             <div class="hero-content">
@@ -119,15 +123,14 @@
         </div>
     </section>
     
-  <!-- Updated Booking Section -->
-<!-- Updated Booking Section - Replace the existing booking section with this code -->
+ <!-- Updated Booking Section -->
 <section class="booking-section" id="booking">
     <h2 class="section-title">Book Your <span class="gradient-text">Guitar Lesson</span></h2>
     <div class="booking-container">
         <div class="booking-image">
-            <img src="/api/placeholder/600/800" alt="Guitar Lesson" style="width: 100%; height: auto;">
+            <img src="/api/placeholder/400/320" alt="Guitar Lesson">
         </div>
-        <div class="booking-form">
+        <div class="booking-form login-required"> <!-- Added login-required class -->
             <form id="lessonForm">
                 <div class="form-group">
                     <label for="package">Select Package:</label>
@@ -199,11 +202,8 @@
                     </div>
                 </div>
                 
-                <!-- Hidden initially, will show if needed -->
-                <button type="button" class="btn-submit" id="bookBtn">Book Now</button>
-                
                 <!-- PayPal button container -->
-                <div id="paypal-button-container"></div>
+                <div id="paypal-button-container" class="disabled"></div>
             </form>
         </div>
     </div>
@@ -381,9 +381,6 @@
             <div class="social-auth">
                 <button type="button" class="social-auth-btn google">
                     <i class="fab fa-google"></i> Sign up with Google
-                </button>
-                <button type="button" class="social-auth-btn facebook">
-                    <i class="fab fa-facebook-f"></i> Sign up with Facebook
                 </button>
             </div>
         </form>
