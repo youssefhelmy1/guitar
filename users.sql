@@ -1,3 +1,4 @@
+-- Active: 1716015696405@@127.0.0.1@3306@y7elmy
  
  CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
