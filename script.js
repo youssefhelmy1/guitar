@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const dayOptions = document.querySelectorAll('.day-option');
     const timeSlots = document.querySelectorAll('.time-slot');
     const packageSelect = document.getElementById('package');
-    const bookBtn = document.getElementById('bookBtn');
     const paypalContainer = document.getElementById('paypal-button-container');
     
     // Summary elements
@@ -36,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // If on booking section and not logged in, show login modal
                 if (window.location.hash === '#booking' && !isLoggedIn) {
                     openAuthModal();
+                } else if (isLoggedIn && window.location.hash === '#booking') {
+                    enableBookingForm();
                 }
             })
             .catch(error => console.error('Error checking login status:', error));
@@ -67,12 +68,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Login button click
     if (loginBtn) {
-        loginBtn.addEventListener('click', function() {
-            if (isLoggedIn) {
-                window.location.href = 'dashboard.php';
-            } else {
-                openAuthModal();
-            }
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+    
+            // Check login status again in case it has changed
+            fetch('check_login.php')
+                .then(response => response.json())
+                .then(data => {
+                    isLoggedIn = data.logged_in;
+                    updateLoginButton();
+    
+                    if (isLoggedIn) {
+                        window.location.href = 'dashboard.php';
+                    } else {
+                        openAuthModal();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                    openAuthModal(); // fallback to modal if error
+                });
         });
     }
     
@@ -238,15 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Initialize booking functionality
         initializeBookingForm();
-    }
-    
-    // Initially hide the book button and show PayPal
-    if (bookBtn) {
-        bookBtn.style.display = 'none';
-    }
-    
-    if (paypalContainer) {
-        paypalContainer.style.display = 'block';
+        setupUnavailableSlots();
     }
     
     // Track selected values
@@ -354,52 +361,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const isValid = selectedDay && selectedTime;
         
         // Update PayPal button status
-        if (isValid) {
+        if (isValid && paypalContainer) {
             paypalContainer.classList.remove('disabled');
-        } else {
+        } else if (paypalContainer) {
             paypalContainer.classList.add('disabled');
         }
-    }
-    
-    // Initialize PayPal only if logged in
-    if (isLoggedIn && paypalContainer) {
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                // Validate selections before creating order
-                if (!selectedDay || !selectedTime) {
-                    if (!selectedDay) {
-                        document.getElementById('dayRequired').style.display = 'block';
-                    }
-                    if (!selectedTime) {
-                        document.getElementById('timeRequired').style.display = 'block';
-                    }
-                    return null;
-                }
-                
-                const amount = selectedPackage === 'package' ? '200.00' : '25.00';
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: amount
-                        },
-                        description: `Guitar Lesson: ${selectedPackage === 'package' ? '12-Lesson Package' : 'Single Lesson'} - ${selectedDay} at ${formatTime(selectedTime)}`
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // On successful payment
-                    completeBooking(details);
-                });
-            },
-            onCancel: function(data) {
-                showMessage('Payment was cancelled. Your lesson has not been booked.', 'error');
-            },
-            onError: function(err) {
-                showMessage('There was an error processing your payment. Please try again.', 'error');
-                console.error('PayPal Error:', err);
-            }
-        }).render('#paypal-button-container');
     }
     
     // Function to complete booking after successful payment
@@ -480,8 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSummary();
     }
     
-    // Setup unavailable time slots (for demonstration)
-    // In a real application, this would be loaded from the server
+    // Setup unavailable time slots
     function setupUnavailableSlots() {
         // Get unavailable slots from server
         fetch('get_booked_slots.php')
@@ -509,13 +474,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error loading booked slots:', error);
             });
-    }
-    
-    // Initialize if logge
-    // Initialize if logged in
-    if (isLoggedIn) {
-        setupUnavailableSlots();
-        enableBookingForm();
     }
 
     // Handle "Sign in with Google" button click
@@ -549,7 +507,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Special character check
             if (/[^A-Za-z0-9]/.test(password)) strength += 1;
-            
             // Update strength indicator
             passwordStrength.className = 'password-strength';
             
