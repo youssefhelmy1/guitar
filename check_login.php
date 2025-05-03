@@ -1,6 +1,5 @@
 <?php
 session_start();
-header('Content-Type: application/json');
 
 // Check if user is logged in
 $loggedIn = isset($_SESSION['user_id']);
