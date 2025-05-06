@@ -1,15 +1,20 @@
 <?php
-// db_connection.php
-$servername = "localhost";
-$username = "root"; // Replace with your database username
-$password = "";
-$dbname = "y7elmy";
+$host = 'localhost';        // Your database host (usually 'localhost')
+$db   = 'y7elmy';    // Your database name
+$user = 'root';    // Your MySQL username
+$pass = '';    // Your MySQL password
+$charset = 'utf8mb4';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (PDOException $e) {
+    die('Connection failed: ' . $e->getMessage());
 }
 ?>
