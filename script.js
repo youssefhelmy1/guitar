@@ -114,15 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('selected');
         });
     });
-    
-    // Login form submission
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
+         
             // Validate inputs
             if (!email || !password) {
                 showAuthMessage('Please enter both email and password', 'error');
@@ -157,26 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Login error:', error);
                 showAuthMessage('An error occurred. Please try again.', 'error');
             });
-        });
-    }
-    
-    // Signup form submission
-    if (signupForm) {
-        signupForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('signupName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('signupConfirmPassword').value;
-            
-            // Get selected experience level
-            let experience = 'beginner';
-            document.querySelectorAll('.experience-option').forEach(option => {
-                if (option.classList.contains('selected')) {
-                    experience = option.getAttribute('data-value');
-                }
-            });
             
             // Validate inputs
             if (!name || !email || !password) {
@@ -188,13 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showAuthMessage('Passwords do not match', 'error');
                 return;
             }
-            
-            // Send signup request
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('password', password);
-            formData.append('experience', experience);
             
             fetch('signup.php', {
                 method: 'POST',
@@ -219,8 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Signup error:', error);
                 showAuthMessage('An error occurred. Please try again.', 'error');
             });
-        });
-    }
     
     // Show message in auth modal
     function showAuthMessage(message, type) {
