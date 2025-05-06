@@ -66,11 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto'; // Allow scrolling
     }
     
-    // Login button click
-    if (loginBtn) {
-        loginBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-    
             // Check login status again in case it has changed
             fetch('check_login.php')
                 .then(response => response.json())
