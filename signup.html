@@ -10,13 +10,15 @@
     </style>
 </head>
 <body>
-<!-- ... rest of the HTML head ... -->
-<body>
     <div class="auth-modal active">
         <div class="modal-content">
-            <h2 class="gradient-text" style="text-align:center; margin-bottom: 1.5rem;">Welcome Back</h2>
-            <form action="authenticate.php" method="POST" class="auth-form active">
-                <!-- Email and Password Fields -->
+            <h2 class="gradient-text" style="text-align:center; margin-bottom: 1.5rem;">Create Account</h2>
+            <form action="signup.php" method="POST" class="auth-form active">
+                <!-- Name, Email, Password Fields -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" name="email" id="email" class="form-control" required>
@@ -25,18 +27,20 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" class="form-control" required>
                 </div>
-                <button type="submit" class="btn-submit">Login</button>
+                <button type="submit" class="btn-submit">Sign Up</button>
             </form>
+
             <div class="google-login" style="text-align:center; margin: 1.5rem 0;">
                 <a href="google-login.php" class="btn-submit" style="background: #fff; color: #000; display: flex; align-items: center; justify-content: center; text-decoration: none;">
                     <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style="height: 20px; margin-right: 8px;">
                     Continue with Google
                 </a>
             </div>
-            <p style="text-align:center;">Don't have an account? 
-                <a href="signup.html" class="gradient-text">Sign Up</a>
+            
+
+            <p style="text-align:center;">Already have an account? 
+                <a href="login.html" class="gradient-text">Log In</a>
             </p>
         </div>
     </div>
 </body>
-</html>

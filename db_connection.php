@@ -1,20 +1,17 @@
 <?php
-$host = 'localhost';        // Your database host (usually 'localhost')
-$db   = 'y7elmy';    // Your database name
-$user = 'root';    // Your MySQL username
-$pass = '';    // Your MySQL password
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+$host = 'localhost';
+$dbname = 'y7elmy'; // ✅ Replace with your actual DB name
+$username = 'root';
+$password = ''; // Default in XAMPP
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
-    die('Connection failed: ' . $e->getMessage());
+    $conn = new mysqli($host, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        throw new Exception("Connection failed: " . $conn->connect_error);
+    }
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Database connection failed: ' . $e->getMessage()]);
+    exit();
 }
 ?>

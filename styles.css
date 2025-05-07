@@ -1300,3 +1300,43 @@ body {
     visibility: visible;
     opacity: 1;
 }
+.divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  
+  .divider span {
+    background-color: #fff;
+    padding: 0 10px;
+    color: #999;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .divider::before {
+    content: '';
+    height: 1px;
+    background: #ccc;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 0;
+  }
+  
+  .google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    gap: 10px;
+  }
+  
+  .google-btn img {
+    width: 20px;
+    height: 20px;
+  }
+  
